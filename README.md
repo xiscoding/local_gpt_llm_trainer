@@ -1,7 +1,7 @@
 # local_gpt_llm_trainer
 
 ## Overview 
-This is a native python implementation of the [gpt-llm-trainer](https://github.com/mshumer/gpt-llm-trainer/tree/main) by [mshumer](https://github.com/mshumer).
+This is a local python implementation of the [gpt-llm-trainer](https://github.com/mshumer/gpt-llm-trainer/tree/main) by [mshumer](https://github.com/mshumer).
 ## Features
 You can now specify the dataset path and train a model from a previously generated dataset.
 Otherwise the feature set is the same as the original gpt-llm-traininer:
