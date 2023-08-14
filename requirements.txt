@@ -6,3 +6,4 @@ accelerate
 peft
 bitsandbytes
 trl
+scipy
