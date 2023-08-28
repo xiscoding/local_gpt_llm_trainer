@@ -15,13 +15,23 @@ The generated examples and system message are saved to a JSON file 'output.json'
 """
 def main():
 
-    prompt = "A model that takes in a puzzle-like reasoning-heavy question in English, and responds with a well-reasoned, step-by-step thought out response."
+    # Load content and prompt strings from JSON
+    with open("prompts.json", "r") as file:
+        prompts_data = json.load(file)
+
+    group_name = "generate_puzzles"
+    example_content = prompts_data[group_name]["example_content"]
+    system_message_content = prompts_data[group_name]["system_message_content"]
+    prompt = prompts_data[group_name]["prompt"]
+
+
+    prompt = prompt
     temperature = 0.4
     number_of_examples = 100
     openai.api_key = "OPEN AI API KEY GOES HERE"
     data_gen = DataGenerator(openai.api_key)
-    examples = data_gen.generate_examples(prompt=prompt, number_of_examples=number_of_examples, temperature=temperature)
-    system_message = data_gen.generate_system_message(prompt=prompt, temperature=temperature)
+    examples = data_gen.generate_examples(prompt=prompt,content=example_content, number_of_examples=number_of_examples, temperature=temperature)
+    system_message = data_gen.generate_system_message(prompt=prompt, content=system_message_content, temperature=temperature)
     print(f'The system message is: `{system_message}`. Re-run if you want a better result.')
     data = {
         "system_message": system_message,
