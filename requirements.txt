@@ -1,8 +1,9 @@
-torch==1.9.0
-datasets==1.11.0
-transformers==4.31.0
-openai==0.27.0
-accelerate==0.21.0
-peft==0.4.0
-bitsandbytes==0.40.2
-trl==0.4.7
+torch
+datasets
+transformers
+openai
+accelerate
+peft
+bitsandbytes
+trl
+scipy
