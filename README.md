@@ -1,5 +1,5 @@
 # local_gpt_llm_trainer
-
+### Requirements. Anaconda, available on window, osx, debian, etc. 
 ## Overview 
 This is a local python implementation of the [gpt-llm-trainer](https://github.com/mshumer/gpt-llm-trainer/tree/main) by [mshumer](https://github.com/mshumer).
 ## Features
@@ -13,12 +13,13 @@ Otherwise the feature set is the same as the original gpt-llm-traininer:
 - **Fine-Tuning**: After your dataset has been generated, the system will automatically split it into training and validation sets, fine-tune a model for you, and get it ready for inference.
 ## Installation:
 - **Required Software**
+	- A system that can run anaconda [system requirements](https://docs.anaconda.com/anaconda-repository/admin-guide/install/requirements/)
 	- Python 3.9+ (I use anaconda)
 	- openAI API key (**A dataset of around 1000 examples seemed to almost cost 10$**)
 		- This is probably an exaggeration (I was generating more than just the data), but this is not free to run by any means
 	- IDE (I use vscode)
 - **Install steps**
-	- Create anaconda environment (optional but why not)
+	- Create anaconda environment 
 	- conda install pip (only if using anaconda environment)
 	- clone this repo
 	- pip install -r requirements.txt
@@ -103,4 +104,13 @@ max_seq_length = None
 packing = False
 device_map = {"": 0}
 ```
+### langchain
 
+- Two web parsers with examples. 
+#### langchain_web_docParser_1.py: 
+Enter a url and a goal. The code will search recursively every link  on that page for content related to your goal for a specified depth. get every link from a parent link then every link from the child links until some specified depth of child links are provided. 
+
+#### langchain_web_docParser.py
+Multiple model method to find the best urls related to a certain search. Can be used more generally for any task with searching a document conditionally. 
+
+- Functions can be added to the chain to perform additional tasks. 
