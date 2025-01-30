@@ -2,7 +2,7 @@ import json
 import openai
 import os
 from data_generator import DataGenerator
-
+from secret import SECRET
 """
 The main function is responsible for generating examples and a system message based on a defined prompt.
 It uses the following elements:
@@ -24,19 +24,33 @@ def main():
     system_message_content = prompts_data[group_name]["system_message_content"]
     prompt = prompts_data[group_name]["prompt"]
 
-
     prompt = prompt
     temperature = 0.4
-    number_of_examples = 100
-    openai.api_key = "OPEN AI API KEY GOES HERE"
+    number_of_examples = 10
+    openai.api_key = SECRET
+    
+#### NOTE: GENERATE DATA ##########
     data_gen = DataGenerator(openai.api_key)
-    examples = data_gen.generate_examples(prompt=prompt,content=example_content, number_of_examples=number_of_examples, temperature=temperature)
-    system_message = data_gen.generate_system_message(prompt=prompt, content=system_message_content, temperature=temperature)
+    # System message
+    system_message = data_gen.generate_system_message(
+        prompt=prompt, 
+        content=system_message_content, 
+        temperature=temperature)
     print(f'The system message is: `{system_message}`. Re-run if you want a better result.')
+
+    # Examples
+    examples = data_gen.generate_examples(
+        prompt=prompt,
+        content=example_content,
+        number_of_examples=number_of_examples,
+        temperature=temperature
+    )
+    ###### NOTE: FINAL DATA ##################
     data = {
         "system_message": system_message,
         "examples": examples
     }
+    data = data_gen.create_query_response_pairs(data)
     with open('output.json', 'w') as file:
         json.dump(data, file)
     return examples, system_message

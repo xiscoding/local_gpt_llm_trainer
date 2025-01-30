@@ -4,6 +4,11 @@
         "system_message_content": "You will be given a high-level description of the model we are training, and from that, you will generate a simple system prompt for that model to use. Remember, you are not generating the system message for data generation -- you are generating the system message to use for inference. A good format to follow is `Given $INPUT_DATA, you will $WHAT_THE_MODEL_SHOULD_DO.`.\n\nMake it as concise as possible. Include nothing but the system prompt in your response.\n\nFor example, never write: `\"$SYSTEM_PROMPT_HERE\"`.\n\nIt should be like: `$SYSTEM_PROMPT_HERE`.",
         "prompt": "A model that takes in a puzzle-like reasoning-heavy question in English, and responds with a well-reasoned, step-by-step thought out response."
     },
+    "evaluate_example": {
+        "evalutation_instructions": "Your content string here for generate_example in group2",
+        "system_message": "Your content string here for generate_system_message in group2",
+        "examples": "Your prompt string here for group2"
+    },
     "group2": {
         "example_content": "Your content string here for generate_example in group2",
         "system_message_content": "Your content string here for generate_system_message in group2",

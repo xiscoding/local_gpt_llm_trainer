@@ -6,7 +6,7 @@ This is a local python implementation of the [gpt-llm-trainer](https://github.co
 You can now specify the dataset path and train a model from a previously generated dataset.
 Otherwise the feature set is the same as the original gpt-llm-traininer:
   
-- **Dataset Generation**: Using GPT-4, `gpt-llm-trainer` will generate a variety of prompts and responses based on the provided use-case.
+- **Dataset Generation**: Using GPT-4, `gpt_llm_dataprep` will generate a variety of prompts and responses based on the provided use-case.
 
 - **System Message Generation**: `gpt-llm-trainer` will generate an effective system prompt for your model.
 
@@ -26,7 +26,15 @@ Otherwise the feature set is the same as the original gpt-llm-traininer:
 ## Usage
 The only file you need to run is the gpt_llm_trainer.py, but in each file there will be things you need to change to work for your personal use
 Open each file, search for the terms, make appropriate edits
-- gpt_llm_dataprep.py 
+### gpt_llm_dataprep.py (GENERATE DATASETS)
+Generates a system prompt and series of questions in json format:
+``` json
+{
+        "system_message": system_message (string),
+        "examples": examples (list)
+}
+```
+#### hyperparameters
 	- **openai.api_key** (required to run)
 	- prompt
 	- temperature
@@ -67,8 +75,12 @@ temperature,
 )
 ```
 
-- gpt_llm_trainer.py
-	- This is the only file you need to run 
+#### qwen_data_evaluator.py
+- This script is used to evaluate the quality of the generated data
+- NOTE: prompts should be specific to evaluation task
+
+
+#### gpt_llm_trainer.py
 	- Hyper parameters are specified here 
 ``` python
 # Define Hyperparameters
